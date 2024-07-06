@@ -5,4 +5,9 @@ export const colors = {
     tertiary: "#242425", // Couleur des posts et de la TabBar
     quaternary: "#111216", // Couleur d'arriere plan
   },
+  text: {
+    primary: "#FFFFFF",
+    secondary: "#000",
+    tertiary: "#FFF61A",
+  },
 };
