@@ -24,11 +24,16 @@ const PostList: React.FC<Props> = ({
   onDeletePost,
   onEditPost,
 }) => {
+  const postSorted = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={posts}
+        data={postSorted}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.list}
         renderItem={({ item }) => (
           <PostItem
             post={item}
@@ -57,6 +62,9 @@ const styles = StyleSheet.create({
     height: 100,
     marginTop: 10,
     objectFit: "cover",
+  },
+  list: {
+    paddingBottom: 80, // Ajustez cette valeur en fonction de la hauteur de votre BottomTabNavigation
   },
 });
 

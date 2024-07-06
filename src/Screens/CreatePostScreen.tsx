@@ -84,6 +84,8 @@ const CreatePostScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Creer un nouveau post</Text>
+
       <Button title="Selectionner une image" onPress={pickImage} />
       {imageUri ? (
         <Image source={{ uri: imageUri }} style={styles.image} />
@@ -132,6 +134,13 @@ const styles = StyleSheet.create({
   btnText: {
     fontSize: 18,
     color: colors.text.secondary,
+    fontWeight: "bold",
+  },
+  text: {
+    color: colors.text.tertiary,
+    fontSize: 20,
+    marginTop: 20,
+    marginBottom: 10,
     fontWeight: "bold",
   },
 });

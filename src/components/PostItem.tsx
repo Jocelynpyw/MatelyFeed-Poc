@@ -113,7 +113,7 @@ const PostItem: React.FC<Props> = ({
 
       <Text style={styles.textPost}>{post.text}</Text>
       {post.image && (
-        <Image source={{ uri: post.image }} style={styles.image} />
+        <Image source={{ uri: post.image }} style={styles.imagee} />
       )}
 
       <Modal
@@ -195,6 +195,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 15,
     // elevation: 5,
+  },
+  imagee: {
+    width: Dimensions.get("window").width - 40, // 20 to account for horizontal margins
+
+    height: 120,
+
+    marginTop: 10,
+    objectFit: "cover",
   },
   image: {
     width: Dimensions.get("window").width - 150, // 20 to account for horizontal margins

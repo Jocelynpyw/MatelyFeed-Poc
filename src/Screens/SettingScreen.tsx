@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import PostList from "../components/PostList";
 
@@ -7,6 +7,7 @@ import { colors } from "../utils/color";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { deletePost, editPost } from "../redux/postsSlice";
+import { emptyImage } from "../utils/images";
 
 const SettingScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,12 +23,19 @@ const SettingScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Mes posts</Text>
-      <PostList
-        posts={posts}
-        btnHandle={true}
-        onDeletePost={onDeletePost}
-        onEditPost={onEditPost}
-      />
+      {posts.length == 0 ? (
+        <View style={styles.emptyContainer}>
+          <Image source={emptyImage} style={styles.imageEmpty} />
+          <Text style={styles.textEmpty}>Aucun post</Text>
+        </View>
+      ) : (
+        <PostList
+          posts={posts}
+          btnHandle={true}
+          onDeletePost={onDeletePost}
+          onEditPost={onEditPost}
+        />
+      )}
     </View>
   );
 };
@@ -40,6 +48,22 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.text.tertiary,
+    fontSize: 20,
+    marginHorizontal: 10,
+    fontWeight: "bold",
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  imageEmpty: {
+    width: 200,
+    height: 200,
+    objectFit: "contain",
+  },
+  textEmpty: {
+    color: colors.text.primary,
     fontSize: 20,
     marginHorizontal: 10,
     fontWeight: "bold",

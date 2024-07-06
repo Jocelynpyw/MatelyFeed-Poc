@@ -25,6 +25,8 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Votre actualité</Text>
+
       <PostList posts={posts} btnHandle={false} />
     </View>
   );
@@ -35,5 +37,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.app.quaternary,
     paddingTop: 20,
+  },
+  text: {
+    color: colors.text.tertiary,
+    fontSize: 20,
+    marginHorizontal: 10,
+    fontWeight: "bold",
   },
 });
